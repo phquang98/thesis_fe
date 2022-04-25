@@ -1,6 +1,3 @@
-import { Outlet } from "react-router-dom";
-import { StyledFooter } from "../../components/Footer/styles";
-import { StyledHeader } from "../../components/Header/styles";
 import { StyledLoginForm } from "../../components/LoginForm/styles";
 
 type MainPageProps = {
@@ -14,7 +11,7 @@ const MainPage = (props: MainPageProps): JSX.Element => {
     <>
       <div className={className}>
         <p>This is a Main Page</p>
-        <StyledLoginForm />
+        <p>Public data that everyone can access go here</p>
       </div>
     </>
   );

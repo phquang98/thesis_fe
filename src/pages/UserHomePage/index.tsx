@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useAuth } from "../../hooks/useAuth";
 
 type UserHomePageProps = {
   className?: string;
@@ -6,12 +6,13 @@ type UserHomePageProps = {
 
 const UserHomePage = (props: UserHomePageProps): JSX.Element => {
   const { className } = props;
+  const auth = useAuth();
 
   return (
     <>
       <div className={className}>
         <p>This is the Home Page</p>
-        <p>User Name: ASDASD</p>
+        <p>User Name: {auth.userData.username}</p>
         <p>Balance: 690$</p>
         <ul>
           <p>Latest transaction</p>

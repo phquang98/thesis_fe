@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { StyledRegisterForm } from "../../components/RegisterForm/styles";
+import { useAuth } from "../../hooks/useAuth";
 
 type UserProfilePageProps = {
   className?: string;
@@ -7,13 +6,14 @@ type UserProfilePageProps = {
 
 const UserProfilePage = (props: UserProfilePageProps): JSX.Element => {
   const { className } = props;
+  const auth = useAuth();
 
   return (
     <>
       <div className={className}>
         <p>This is the Profile Page</p>
         <p>User ID: 123456</p>
-        <p>User Name: johnny_doe</p>
+        <p>User Name: {auth.userData.username}</p>
       </div>
     </>
   );

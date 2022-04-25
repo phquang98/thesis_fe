@@ -1,5 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import { StyledAppWrapper } from "../pages/AppWrapper/styles";
+import AuthRequired from "../pages/AuthRequired";
+import FailedAuth from "../pages/AuthRequired";
+import { StyledLoginPage } from "../pages/LoginPage/styles";
 
 import { StyledMainPage } from "../pages/MainPage/styles";
 import { StyledRegisterPage } from "../pages/RegisterPage/styles";
@@ -14,13 +17,41 @@ const AppRoute = (): JSX.Element => {
       <Routes>
         <Route path="/" element={<StyledAppWrapper />}>
           <Route index element={<StyledMainPage />} />
+          <Route path="login" element={<StyledLoginPage />} />
           <Route path="register" element={<StyledRegisterPage />} />
           {/* <Route path=":userId"> */}
-          <Route path="home" element={<StyledUserHomePage />} />
-          <Route path="profile" element={<StyledUserProfilePage />} />
-          <Route path="transaction" element={<StyledUserTransactionPage />} />
-          <Route path="statement" element={<StyledUserStatementPage />} />
-
+          <Route
+            path="home"
+            element={
+              <AuthRequired>
+                <StyledUserHomePage />
+              </AuthRequired>
+            }
+          />
+          <Route
+            path="profile"
+            element={
+              <AuthRequired>
+                <StyledUserProfilePage />
+              </AuthRequired>
+            }
+          />
+          <Route
+            path="transaction"
+            element={
+              <AuthRequired>
+                <StyledUserTransactionPage />
+              </AuthRequired>
+            }
+          />
+          <Route
+            path="statement"
+            element={
+              <AuthRequired>
+                <StyledUserStatementPage />
+              </AuthRequired>
+            }
+          />
           {/* </Route> */}
         </Route>
       </Routes>

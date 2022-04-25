@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { StyledList } from "../../components/List/styles";
-import { StyledRegisterForm } from "../../components/RegisterForm/styles";
 
 type UserStatementPageProps = {
   className?: string;

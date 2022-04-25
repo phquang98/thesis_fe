@@ -3,16 +3,19 @@ import { ThemeProvider } from "styled-components";
 
 import AppRoute from "./routes";
 import { customTheme, GlobalStyles } from "./styles";
+import AuthProvider from "./hooks/AuthProvider";
 
 const App = (): JSX.Element => {
   return (
     <>
-      <ThemeProvider theme={customTheme}>
-        <BrowserRouter>
-          <GlobalStyles />
-          <AppRoute />
-        </BrowserRouter>
-      </ThemeProvider>
+      <AuthProvider>
+        <ThemeProvider theme={customTheme}>
+          <BrowserRouter>
+            <GlobalStyles />
+            <AppRoute />
+          </BrowserRouter>
+        </ThemeProvider>
+      </AuthProvider>
     </>
   );
 };
