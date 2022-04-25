@@ -1,3 +1,4 @@
+import ContentPlaceholder from "../../components/ContentPlaceholder";
 import { StyledLoginForm } from "../../components/LoginForm/styles";
 
 type MainPageProps = {
@@ -11,7 +12,7 @@ const MainPage = (props: MainPageProps): JSX.Element => {
     <>
       <div className={className}>
         <p>This is a Main Page</p>
-        <p>Public data that everyone can access go here</p>
+        <ContentPlaceholder />
       </div>
     </>
   );
