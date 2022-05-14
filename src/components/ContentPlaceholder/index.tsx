@@ -1,34 +1,26 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { axiosInstance } from "../../api/axios";
-import { ExampleAPIConsumer } from "../../api/example";
-
-type JSONPlaceholderTypes = {
-  userId: string;
-  id: string;
-  title: string;
-  body: string;
-};
+import { UAccAPI } from "../../api";
+import { TServerResponse } from "../../utils/types.util";
 
 const ContentPlaceholder = (): JSX.Element => {
-  const [mockData, setMockData] = useState<JSONPlaceholderTypes | null>(null);
+  const [mockData, setMockData] = useState<TServerResponse | null>(null);
 
-  useEffect(() => {
-    const getData = async (): Promise<void> => {
-      const asd = await ExampleAPIConsumer.getOneExample();
-      setMockData(asd);
-    };
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   const getData = async (): Promise<void> => {
+  //     const asd = await UAccAPI.login({
+  //       clientData: { account_name: "Chloe.Oberbrunner64", account_pwd: "GSrW0rCozSHZrNg" }
+  //     });
+  //     console.log("cai loz", asd);
+  //     setMockData(asd);
+  //   };
+  //   getData();
+  // }, []);
 
   if (mockData) {
     return (
       <>
         <div>
-          <p>UserID: {mockData.userId}</p>
-          <p>ID: {mockData.id}</p>
-          <p>Title: {mockData.title}</p>
-          <p>Body: {mockData.body}</p>
+          <p>What I want: {mockData.msg}</p>
         </div>
       </>
     );

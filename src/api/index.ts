@@ -5,5 +5,8 @@ export const axiosInstance = axios.create({
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json; charset=UTF-8"
-  }
+  },
+  withCredentials: true // CORS
 });
+
+export { UAccAPI } from "./UAcc.api";

@@ -1,30 +1,29 @@
 // import { useEffect, useState } from "react";
 
-// const getKPFromLS = (key: string, iniValue: string | Function) => {
+// const getKPFromLS = (key: string, iniValue: string): string => {
 //   const suspectKP = localStorage.getItem(key);
 //   if (suspectKP) {
 //     const recordKP = JSON.parse(suspectKP);
 //     return recordKP;
 //   }
 
-//   if (iniValue instanceof Function) {
-//     return iniValue();
-//   }
-
 //   return iniValue;
 // };
 
-// export const useLocalStorage = (key: string, iniValue: string) => {
-//   const [userSIDInLS, setUserSIDInLS] = useState<string>(() => {
+// export const useLocalStorage = (
+//   key: string,
+//   iniValue: string
+// ): [string, React.Dispatch<React.SetStateAction<string>>] => {
+//   const [userDataInLS, setUserDataInLS] = useState<string>(() => {
 //     return getKPFromLS(key, iniValue);
 //   });
 
 //   useEffect(() => {
-//     localStorage.setItem(key, JSON.stringify(userSIDInLS));
-//   }, [key, userSIDInLS]);
+//     localStorage.setItem(key, JSON.stringify(userDataInLS));
+//   }, [key, userDataInLS]);
 
-//   return [userSIDInLS, setUserSIDInLS];
+//   return [userDataInLS, setUserDataInLS];
 // };
 export {};
 
-// // store user session id in local storage -> so that if refresh, page still remember who it is
+// // Explain: store user session id in local storage -> so that if refresh, page still remember who it is

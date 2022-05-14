@@ -12,7 +12,7 @@ const MainPage = (props: MainPageProps): JSX.Element => {
     <>
       <div className={className}>
         <p>This is a Main Page</p>
-        <ContentPlaceholder />
+        <p>Public data that anyone can access...</p>
       </div>
     </>
   );

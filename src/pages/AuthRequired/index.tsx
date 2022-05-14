@@ -15,7 +15,8 @@ const AuthRequired = ({ children }: FailedAuthProps): JSX.Element => {
     navigate("/login");
   };
 
-  if (auth && auth.userData.username === "") {
+  if (auth && auth.userData.sid === "") {
+    console.log("ki vay authrequired", auth);
     return (
       <>
         <div>

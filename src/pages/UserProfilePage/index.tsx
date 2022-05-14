@@ -12,8 +12,7 @@ const UserProfilePage = (props: UserProfilePageProps): JSX.Element => {
     <>
       <div className={className}>
         <p>This is the Profile Page</p>
-        <p>User ID: 123456</p>
-        <p>User Name: {auth.userData.username}</p>
+        <p>User ID: {auth.userData.userId}</p>
       </div>
     </>
   );

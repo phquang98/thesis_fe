@@ -1,5 +1,6 @@
 import { MouseEventHandler } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { UAccAPI } from "../../api";
 
 import { useAuth } from "../../hooks/useAuth";
 
@@ -13,12 +14,17 @@ const Header = (props: HeaderProps): JSX.Element => {
   const navigate = useNavigate();
 
   const btnClickLogoutHdlr: MouseEventHandler<HTMLButtonElement> = () => {
-    auth.logout();
+    const foo = async () => {
+      const serverRes = await UAccAPI.logout(auth.userData.userId);
+      // if (serverRes.) TODO: them status code cho BE vao, dmm
+    };
+
+    auth.eraseLoggedInUser();
     navigate("/");
   };
 
   // if logged in
-  if (auth.userData.username !== "") {
+  if (auth.userData.sid !== "") {
     return (
       <div className={className}>
         <Link to="/">Main</Link>

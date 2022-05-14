@@ -10,22 +10,25 @@ export const AppCtx = createContext<TAppCtx>({} as TAppCtx);
 
 const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
   // (2)
-  const [userData, setUserData] = useState<TUserData>({ userId: "", username: "" });
+  const [userData, setUserData] = useState<TUserData>({ userId: "", sid: "" });
 
   // (3)
-  const login = (loginInput: TLoginData): void => {
-    setUserData({ userId: "123", username: loginInput.account_name_login });
+  const setLoggedInUser = (loginInput: TUserData): void => {
+    setUserData({ userId: loginInput.userId, sid: loginInput.sid });
+    localStorage.setItem("userId", JSON.stringify(loginInput.userId));
+    localStorage.setItem("sid", JSON.stringify(loginInput.sid));
   };
 
   // (4)
-  const logout = (): void => {
-    setUserData({ userId: "", username: "" });
+  const eraseLoggedInUser = (): void => {
+    setUserData({ userId: "", sid: "" });
+    localStorage.clear();
   };
 
   // (5)
   return (
     <>
-      <AppCtx.Provider value={{ userData, login, logout }}>{children}</AppCtx.Provider>
+      <AppCtx.Provider value={{ userData, setLoggedInUser, eraseLoggedInUser }}>{children}</AppCtx.Provider>
     </>
   );
 };

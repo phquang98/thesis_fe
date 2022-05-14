@@ -12,7 +12,7 @@ const UserHomePage = (props: UserHomePageProps): JSX.Element => {
     <>
       <div className={className}>
         <p>This is the Home Page</p>
-        <p>User Name: {auth.userData.username}</p>
+        <p>User ID: {auth.userData.userId}</p>
         <p>Balance: 690$</p>
         <ul>
           <p>Latest transaction</p>
