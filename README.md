@@ -1,6 +1,6 @@
 # Thesis FE
 
-- `npm i axios`
+- `npm i axios styled-components` + `npm i -D @types/styled-components`
 
 ## Thoughts
 
