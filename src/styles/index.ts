@@ -5,11 +5,12 @@ import robotoFont from "../assets/Roboto-Regular.ttf";
 export const customTheme = {
   light: {
     primary: "#01689b",
-    auxiliary: "#01689b",
+    auxiliary: "#00f6ed",
     text: "white"
   },
   defaultFontSize: "16px",
-  globalPadding: "4rem" // currently for x-axis
+  globalPadding: "4rem", // currently for x-axis
+  globalTransition: "200ms"
 };
 
 export const GlobalStyles = createGlobalStyle`

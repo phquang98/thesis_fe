@@ -5,7 +5,7 @@ import Anchor from ".";
 export const StyledAnchor = styled(Anchor)`
   & {
     text-decoration: none;
-    color: ${(props) => props.styledTextColor ?? "white"};
+    color: ${(props) => props.styledTextColor ?? props.theme.light.text};
     font-size: ${(props) => props.styledFontSize ?? props.theme.defaultFontSize};
   }
 

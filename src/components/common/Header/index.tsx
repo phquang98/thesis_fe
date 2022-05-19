@@ -1,6 +1,7 @@
 import { MouseEventHandler } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { StyledAnchor } from "../Anchor/styles";
+import { MdLogout } from "react-icons/md";
 // import { UAccAPI } from "../../api";
 
 // import { useAuth } from "../../hooks/useAuth";
@@ -15,7 +16,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   // const auth = useAuth();
   const navigate = useNavigate();
 
-  const loggedIn = false;
+  const loggedIn = true;
 
   const btnClickLogoutHdlr: MouseEventHandler<HTMLButtonElement> = () => {
     // const foo = async () => {
@@ -32,14 +33,19 @@ const Header = (props: HeaderProps): JSX.Element => {
     // if (auth.userData.sid !== "") {
     return (
       <div className={className}>
-        <Link to="/">Main</Link>
+        <StyledAnchor anchorArrival="/" displayText="Main" />
 
         <div className="navSection">
-          <Link to="/home">Home</Link>
-          <Link to="/profile">Profile</Link>
-          <Link to="/transaction">Transaction</Link>
-          <Link to="/statement">Bank Statement</Link>
-          <button onClick={btnClickLogoutHdlr}>Logout</button>
+          <StyledAnchor anchorArrival="/home" displayText="Home" />
+          <StyledAnchor anchorArrival="/profile" displayText="Profile" />
+          <StyledAnchor anchorArrival="/statement" displayText="Statement" />
+          <StyledAnchor anchorArrival="/transaction" displayText="Transaction" />
+          <button onClick={btnClickLogoutHdlr} className="logoutBtn">
+            <span className="logoutText">Logout</span>
+            <span className="logoutIcon">
+              <MdLogout />
+            </span>
+          </button>
         </div>
       </div>
     );
@@ -49,15 +55,10 @@ const Header = (props: HeaderProps): JSX.Element => {
   return (
     <>
       <div className={className}>
-        <Link to="/">Main</Link>
+        <StyledAnchor anchorArrival="/" displayText="Main" />
 
         <div className="navSection">
-          <StyledAnchor
-            anchorArrival="/register"
-            displayText={"Register"}
-            styledTextColor={customTheme.light.text}
-            styledFontSize="1rem"
-          />
+          <StyledAnchor anchorArrival="/register" displayText={"Register"} />
         </div>
       </div>
     </>

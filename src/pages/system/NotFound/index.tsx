@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { MdLogout } from "react-icons/md";
 
 const NotFoundPage = (): JSX.Element => {
   return (
     <>
-      <div>Error 404! The page you requested does not existed!</div>
+      <h3>Error 404! The page you requested does not existed!</h3>
     </>
   );
 };
