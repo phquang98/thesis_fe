@@ -6,9 +6,10 @@ export const customTheme = {
   light: {
     primary: "#01689b",
     auxiliary: "#01689b",
-    boldText: "#17628c"
+    text: "white"
   },
-  defaultFontSize: "16px"
+  defaultFontSize: "16px",
+  globalPadding: "4rem" // currently for x-axis
 };
 
 export const GlobalStyles = createGlobalStyle`

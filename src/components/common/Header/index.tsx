@@ -1,8 +1,10 @@
 import { MouseEventHandler } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { StyledAnchor } from "../Anchor/styles";
 // import { UAccAPI } from "../../api";
 
 // import { useAuth } from "../../hooks/useAuth";
+import { customTheme } from "../../../styles/index";
 
 type HeaderProps = {
   className?: string;
@@ -50,7 +52,12 @@ const Header = (props: HeaderProps): JSX.Element => {
         <Link to="/">Main</Link>
 
         <div className="navSection">
-          <Link to="/register">Register</Link>
+          <StyledAnchor
+            anchorArrival="/register"
+            displayText={"Register"}
+            styledTextColor={customTheme.light.text}
+            styledFontSize="1rem"
+          />
         </div>
       </div>
     </>
