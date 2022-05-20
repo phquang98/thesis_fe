@@ -16,7 +16,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   // const auth = useAuth();
   const navigate = useNavigate();
 
-  const loggedIn = false;
+  const loggedIn = true;
 
   const btnClickLogoutHdlr: MouseEventHandler<HTMLButtonElement> = () => {
     // const foo = async () => {
