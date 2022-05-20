@@ -9,6 +9,8 @@ export const customTheme = {
     text: "white"
   },
   defaultFontSize: "16px",
+  defaultPageHeight: "24rem",
+  defaultPadTop: "3rem",
   globalPadding: "4rem", // currently for x-axis
   globalTransition: "200ms"
 };
