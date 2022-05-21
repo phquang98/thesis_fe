@@ -18,12 +18,20 @@ const NotFoundPage = (props: NotFoundProps): JSX.Element => {
   };
 
   useEffect(() => {
-    systemAPI.login({
+    systemAPI.register({
       clientData: {
-        accountName: "Shaina47",
-        accountPwd: "wUdr7rPo7qzGqqK"
+        name: "John",
+        email: "Johntest456@gmail.com",
+        accountName: "johnny",
+        accountPwd: "johnny123"
       }
     });
+    // systemAPI.login({
+    //   clientData: {
+    //     accountName: "Shaina47",
+    //     accountPwd: "wUdr7rPo7qzGqqK"
+    //   }
+    // });
   }, []);
 
   return (
