@@ -7,6 +7,6 @@ export type TUAcc = {
   user_id: string;
 };
 
-type UAccResBody = TBaseResBody & {
+export type UAccResBody = TBaseResBody & {
   serverData: Record<string, never>;
 };

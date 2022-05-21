@@ -8,6 +8,6 @@ export type TFinTransaction = {
   transactedAt: Date;
 };
 
-type FinTransactionResBody = TBaseResBody & {
+export type FinTransactionResBody = TBaseResBody & {
   serverData: Record<string, never> | TFinTransaction | TFinTransaction[];
 };

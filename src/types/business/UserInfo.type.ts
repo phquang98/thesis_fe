@@ -10,6 +10,6 @@ export type TUInfo = {
   pnum?: string;
 };
 
-type UInfoResBody = TBaseResBody & {
+export type UInfoResBody = TBaseResBody & {
   serverData: Record<string, never> | TUInfo;
 };

@@ -1,3 +1,5 @@
+import { FinTransactionResBody } from "./business/FinTransaction.type";
+
 export enum HttpStatusCode {
   OK = 200,
   CREATED = 201,
@@ -13,4 +15,8 @@ export type TBaseResBody = {
   affectedResource: string;
 };
 
-export type TServerError = TBaseResBody;
+export type TServerSuccess = TBaseResBody & {
+  serverData: Record<string, unknown>;
+};
+
+export type TServerError = TBaseResBody & { name: "SimpleError" };
