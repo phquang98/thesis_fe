@@ -3,21 +3,19 @@ import { StyledInputField } from "../common/InputField/styles";
 
 type LoginFormProps = {
   className?: string;
+  changeStateLoginAccName: React.Dispatch<React.SetStateAction<string>>;
+  changeStateLoginAccPass: React.Dispatch<React.SetStateAction<string>>;
   loginBtnFormClick: () => void;
 };
 
 const LoginForm = (props: LoginFormProps): JSX.Element => {
-  const { className, loginBtnFormClick } = props;
-
-  const foo = (dataFromIptField: string): void => {
-    console.log("loginForm", dataFromIptField);
-  };
+  const { className, loginBtnFormClick, changeStateLoginAccName, changeStateLoginAccPass } = props;
 
   return (
     <>
       <div className={className}>
-        <StyledInputField placeHolder="Account" inputType="text" changeState={foo} />
-        <StyledInputField placeHolder="Password" inputType="password" changeState={foo} />
+        <StyledInputField placeHolder="Account" inputType="text" changeState={changeStateLoginAccName} />
+        <StyledInputField placeHolder="Password" inputType="password" changeState={changeStateLoginAccPass} />
         <StyledButton
           networkAction={loginBtnFormClick}
           displayText="Login"

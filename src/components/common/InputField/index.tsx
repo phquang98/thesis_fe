@@ -3,7 +3,7 @@ import { MdSearch } from "react-icons/md";
 
 type InputFieldProps = {
   className?: string;
-  changeState: (newData: string) => void;
+  changeState: React.Dispatch<React.SetStateAction<string>>;
   placeHolder: string;
   inputType: "text" | "email" | "password";
 };
@@ -18,7 +18,6 @@ const InputField = (props: InputFieldProps): JSX.Element => {
   return (
     <>
       <div className={className}>
-        {/* <MdSearch className="iptIcon" /> */}
         <input className="ipt" type={inputType} onChange={iptHdlr} placeholder={placeHolder} />
       </div>
     </>
