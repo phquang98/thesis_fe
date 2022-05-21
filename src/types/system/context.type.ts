@@ -5,6 +5,7 @@ export type TUserData = {
 
 export type TAppCtx = {
   userData: TUserData;
+  isLoggedIn: boolean;
   setLoggedInUser: (arg1: TUserData) => void;
   eraseLoggedInUser: () => void;
 };

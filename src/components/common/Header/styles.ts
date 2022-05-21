@@ -9,6 +9,7 @@ export const StyledHeader = styled(Header)`
     background-color: ${(props) => props.theme.light.primary};
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     .navSection {
       display: flex;

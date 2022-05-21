@@ -1,11 +1,10 @@
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { StyledAnchor } from "../Anchor/styles";
 import { MdLogout } from "react-icons/md";
 // import { UAccAPI } from "../../api";
 
-// import { useAuth } from "../../hooks/useAuth";
-import { customTheme } from "../../../styles/index";
+import { useAuth } from "../../../hooks/useAuth";
 
 type HeaderProps = {
   className?: string;
@@ -13,10 +12,8 @@ type HeaderProps = {
 
 const Header = (props: HeaderProps): JSX.Element => {
   const { className } = props;
-  // const auth = useAuth();
+  const { isLoggedIn, eraseLoggedInUser } = useAuth();
   const navigate = useNavigate();
-
-  const loggedIn = true;
 
   const btnClickLogoutHdlr: MouseEventHandler<HTMLButtonElement> = () => {
     // const foo = async () => {
@@ -24,13 +21,13 @@ const Header = (props: HeaderProps): JSX.Element => {
     //   // if (serverRes.) TODO: them status code cho BE vao, dmm
     // };
 
-    // auth.eraseLoggedInUser();
+    // after confirm destroy session ID in db, do below NOTE: check Cookie destroy ?
+    eraseLoggedInUser();
     navigate("/");
   };
 
-  // if logged in
-  if (loggedIn) {
-    // if (auth.userData.sid !== "") {
+  // If localStorage contains userId && sid
+  if (isLoggedIn) {
     return (
       <div className={className}>
         <StyledAnchor anchorArrival="/" displayText="Main" />
@@ -51,7 +48,7 @@ const Header = (props: HeaderProps): JSX.Element => {
     );
   }
 
-  // if not logged in
+  // If localStorage empty
   return (
     <>
       <div className={className}>

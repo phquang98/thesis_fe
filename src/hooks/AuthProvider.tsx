@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { TAppCtx, TUserData } from "../types/system/context.type";
 
 type AuthProviderProps = {
@@ -11,6 +11,7 @@ export const AppCtx = createContext<TAppCtx>({} as TAppCtx);
 const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
   // (2)
   const [userData, setUserData] = useState<TUserData>({ userId: "", sid: "" });
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   // (3)
   const setLoggedInUser = (loggedInData: TUserData): void => {
@@ -25,10 +26,23 @@ const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
     localStorage.clear();
   };
 
+  useEffect(() => {
+    const checkLoggedInUser = (): void => {
+      const userIdSuspect = localStorage.getItem("userId");
+      const sidSuspect = localStorage.getItem("sid");
+      if (userIdSuspect && sidSuspect) {
+        setIsLoggedIn(true);
+        return;
+      }
+      setIsLoggedIn(false);
+    };
+    checkLoggedInUser();
+  }, [userData, isLoggedIn]);
+
   // (5)
   return (
     <>
-      <AppCtx.Provider value={{ userData, setLoggedInUser, eraseLoggedInUser }}>{children}</AppCtx.Provider>
+      <AppCtx.Provider value={{ userData, isLoggedIn, setLoggedInUser, eraseLoggedInUser }}>{children}</AppCtx.Provider>
     </>
   );
 };
