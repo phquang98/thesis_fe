@@ -37,11 +37,16 @@ export const useAPI = () => {
       | undefined
     > => {
       try {
-        const cac = await systemAPI.healthCheck();
-        console.log("cac", cac);
-        setServerRes(tmpOK);
+        const serverResponse = await systemAPI.healthCheck();
+        console.log("cac", serverResponse);
+        // setServerRes(serverResponse);
+        // setServerRes(tmpOK);
+        // TODO: sua serverRes thanh serverResponse
         if (serverRes && serverRes.statusCode === 200) {
           setIsSuccess(true);
+        } else {
+          setIsFailure(true);
+          setServerErr(tmpErr);
         }
         return;
       } catch (error) {

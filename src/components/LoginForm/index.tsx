@@ -5,7 +5,7 @@ type LoginFormProps = {
   className?: string;
   changeStateLoginAccName: React.Dispatch<React.SetStateAction<string>>;
   changeStateLoginAccPass: React.Dispatch<React.SetStateAction<string>>;
-  loginBtnFormClick: () => void;
+  loginBtnFormClick: () => Promise<void>;
 };
 
 const LoginForm = (props: LoginFormProps): JSX.Element => {

@@ -3,7 +3,7 @@ import { MdLogin, MdLogout } from "react-icons/md";
 
 type ButtonProps = {
   className?: string;
-  networkAction: () => void;
+  networkAction: () => Promise<void>;
   displayText: string;
   icon: string;
   styledWidth: number;

@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { systemAPI } from "../../../api";
 import { StyledCard } from "../../../components/common/Card/styles";
 import { StyledLoginForm } from "../../../components/LoginForm/styles";
 import { StyledNews } from "../../../components/News/styles";
 import { useAuth } from "../../../hooks/useAuth";
-import { useAPI } from "../../../hooks/useFetch";
+import { useAPI } from "../../../hooks/useAPI";
 import { TLoginReqBody } from "../../../types/system/login.type";
 import { mainPageData, yleNews } from "../../../utils";
 
@@ -21,20 +22,31 @@ const MainPage = (props: MainPageProps): JSX.Element => {
   const [inputAccPwd, setInputAccPwd] = useState<string>("");
 
   // (1)
-  const foo = (): void => {
-    const clientData: TLoginReqBody = {
+  const submitInputCredsToServer = async (): Promise<void> => {
+    const sendToServer: TLoginReqBody = {
       clientData: {
         accountName: inputAccName,
         accountPwd: inputAccPwd
       }
     };
-    console.log("check if data ready to send", clientData);
+
+    // TODO: wrap this inside useAPI
+    const serverRes = await systemAPI.login(sendToServer);
+
+    if ("serverData" in serverRes) {
+      auth.setLoggedInUser({ userId: "123456", sid: "abcxyz" });
+    }
+
+    // if ("name" in serverRes) {
+    //   cac;
+    // }
+
+    console.log("check if data ready to send", sendToServer);
     console.log("send login data to server");
     const serverReturnGoodData = true;
     if (serverReturnGoodData) {
       auth.setLoggedInUser({ userId: "123456", sid: "abcxyz" });
     }
-    console.log("userID should be in cookie and localstorage, sid should be in localstorage");
   };
 
   return (
@@ -52,7 +64,7 @@ const MainPage = (props: MainPageProps): JSX.Element => {
             <StyledLoginForm
               changeStateLoginAccName={setInputAccName}
               changeStateLoginAccPass={setInputAccPwd}
-              loginBtnFormClick={foo}
+              loginBtnFormClick={submitInputCredsToServer}
             />
           </StyledCard>
         </div>
