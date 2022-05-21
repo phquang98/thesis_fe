@@ -27,3 +27,8 @@ export const yleNews = [
       "The British national ice hockey team leads Finland in their all-time series 2-1, but the Finns could tie it up on Friday."
   }
 ];
+
+export const mainPageData = {
+  title: "Welcome bonus for new checking customers!",
+  info: "Open a bank account today and set up direct deposit to get a bonus."
+};

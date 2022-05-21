@@ -16,8 +16,8 @@ const LoginForm = (props: LoginFormProps): JSX.Element => {
   return (
     <>
       <div className={className}>
-        <StyledInputField placeHolder="Account" changeState={foo} />
-        <StyledInputField placeHolder="Password" changeState={foo} />
+        <StyledInputField placeHolder="Account" inputType="text" changeState={foo} />
+        <StyledInputField placeHolder="Password" inputType="password" changeState={foo} />
         <StyledButton
           networkAction={loginBtnFormClick}
           displayText="Login"

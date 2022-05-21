@@ -12,6 +12,7 @@ export const StyledHeader = styled(Header)`
 
     .navSection {
       display: flex;
+      align-items: center;
 
       a {
         padding: 0 1.5rem;
