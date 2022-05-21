@@ -25,6 +25,7 @@ export const StyledHeader = styled(Header)`
         cursor: pointer;
         display: flex;
         justify-content: center;
+        align-items: center;
 
         * {
           transition: ${(props) => `all ${props.theme.globalTransition}`};

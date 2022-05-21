@@ -8,6 +8,10 @@ type MainPageProps = {
 const MainPage = (props: MainPageProps): JSX.Element => {
   const { className } = props;
 
+  const foo = (): void => {
+    console.log("send login data to server");
+  };
+
   return (
     <>
       <div className={className}>
@@ -15,7 +19,7 @@ const MainPage = (props: MainPageProps): JSX.Element => {
           <StyledLoginForm />
         </div> */}
         <StyledCard styledHeight="10rem" styledWidth="10rem">
-          <StyledLoginForm />
+          <StyledLoginForm loginBtnFormClick={foo} />
         </StyledCard>
       </div>
     </>

@@ -1,20 +1,19 @@
-import { StyledCard } from "../common/Card/styles";
+import { StyledNewCard } from "../NewCard/styles";
 
 type NewsProps = {
   className?: string;
-  newTitle: string;
-  newInfo: string;
+  newData: { bgURL: string; newTitle: string; newInfo: string }[];
 };
 
 const News = (props: NewsProps): JSX.Element => {
-  const { className } = props;
+  const { className, newData } = props;
 
   return (
     <>
       <div className={className}>
-        <StyledCard styledHeight="20rem" styledWidth="10rem">
-          Hello
-        </StyledCard>
+        {newData.map((ele, index) => {
+          return <StyledNewCard key={index} bgURL={ele.bgURL} newTitle={ele.newTitle} newInfo={ele.newInfo} />;
+        })}
       </div>
     </>
   );

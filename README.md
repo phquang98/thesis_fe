@@ -10,6 +10,8 @@
 
 ## Notes
 
+- Pictures taken from: yle news and getty images
+  - yle image ratio 3:2
 - why most CPN has `className?: string` props
   - cause using `styled-components` -> internally passed `className` attribute to element for styling
   - check here: <https://styled-components.com/docs/api#caveat-with-classname>

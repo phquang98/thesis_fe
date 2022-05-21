@@ -7,8 +7,10 @@ export enum HttpStatusCode {
   NOT_FOUND = 404
 }
 
-export type TServerError = {
+export type TBaseResBody = {
+  statusCode: HttpStatusCode;
   message: string;
   affectedResource: string;
-  statusCode: HttpStatusCode;
 };
+
+export type TServerError = TBaseResBody;
