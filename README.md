@@ -20,3 +20,4 @@
   - userAPI hooks for HTTP POST to different routes of BE
 - Cookies + CORS pain:
   - <https://stackoverflow.com/a/39379524/8834000>
+- Axios return data object:

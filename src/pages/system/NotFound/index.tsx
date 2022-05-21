@@ -1,6 +1,6 @@
-import { MdLogout } from "react-icons/md";
-import { StyledButton } from "../../../components/common/Button/styles";
-import { StyledInputField } from "../../../components/common/InputField/styles";
+import { useEffect } from "react";
+import { systemAPI } from "../../../api";
+
 import { StyledNews } from "../../../components/News/styles";
 import { yleNews } from "../../../utils";
 
@@ -17,9 +17,14 @@ const NotFoundPage = (props: NotFoundProps): JSX.Element => {
     console.log("data", newData);
   };
 
-  const fooTwo = (): void => {
-    console.log("btn clicked");
-  };
+  useEffect(() => {
+    systemAPI.login({
+      clientData: {
+        accountName: "Shaina47",
+        accountPwd: "wUdr7rPo7qzGqqK"
+      }
+    });
+  }, []);
 
   return (
     <>
