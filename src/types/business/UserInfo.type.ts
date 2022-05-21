@@ -1,4 +1,4 @@
-import { TBaseResBody } from "../system";
+import { TBaseResBody } from "../base";
 
 export type TUInfo = {
   id: string;
@@ -10,6 +10,7 @@ export type TUInfo = {
   pnum?: string;
 };
 
-export type UInfoResBody = TBaseResBody & {
+export type UInfoResBody = Pick<TBaseResBody, "statusCode" | "message"> & {
+  affectedResource: "User Information";
   serverData: Record<string, never> | TUInfo;
 };

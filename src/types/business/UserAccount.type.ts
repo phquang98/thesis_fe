@@ -1,4 +1,4 @@
-import { TBaseResBody } from "../system";
+import { TBaseResBody } from "../base";
 
 export type TUAcc = {
   accountName: string;
@@ -7,6 +7,7 @@ export type TUAcc = {
   user_id: string;
 };
 
-export type UAccResBody = TBaseResBody & {
+export type UAccResBody = Pick<TBaseResBody, "statusCode" | "message"> & {
+  affectedResource: "User Account";
   serverData: Record<string, never>;
 };

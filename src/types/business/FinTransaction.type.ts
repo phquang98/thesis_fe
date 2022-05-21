@@ -1,4 +1,4 @@
-import { TBaseResBody } from "../system";
+import { TBaseResBody } from "../base";
 
 export type TFinTransaction = {
   id: string;
@@ -8,6 +8,7 @@ export type TFinTransaction = {
   transactedAt: Date;
 };
 
-export type FinTransactionResBody = TBaseResBody & {
+export type FinTransactionResBody = Pick<TBaseResBody, "statusCode" | "message"> & {
+  affectedResource: "Financial Transaction";
   serverData: Record<string, never> | TFinTransaction | TFinTransaction[];
 };

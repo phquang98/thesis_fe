@@ -4,7 +4,6 @@ import { StyledErrorNoti } from "../components/common/ErrorNoti/styles";
 import { StyledFooter } from "../components/common/Footer/styles";
 import { StyledHeader } from "../components/common/Header/styles";
 import { useAPI } from "../hooks/useAPI";
-import { TServerError, TServerSuccess, HttpStatusCode } from "../types/system";
 
 type LayoutProps = {
   className?: string;

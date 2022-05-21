@@ -1,5 +1,5 @@
-import { TUAcc } from "..";
-import { TBaseResBody } from "../system";
+import { TUAcc } from "../business";
+import { TBaseResBody, TServerError } from "../base";
 
 export type TLoginReqBody = { clientData: Pick<TUAcc, "accountName" | "accountPwd"> };
 
@@ -10,8 +10,4 @@ export type TLoginResSuccess = TBaseResBody & {
   };
 };
 
-export type TLoginResFailure = TBaseResBody & {
-  name: "SimpleError";
-};
-
-export type TLoginRes = TLoginResSuccess | TLoginResFailure;
+export type TLoginRes = TLoginResSuccess | TServerError;

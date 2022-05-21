@@ -1,15 +1,10 @@
-import { TUAcc } from "../business/UserAccount.type";
-import { TUInfo } from "../business/UserInfo.type";
-import { TBaseResBody } from "../system";
+import { TUAcc, TUInfo } from "../business";
+import { TBaseResBody, TServerError } from "../base";
 
 export type TRegisterReqBody = {
   clientData: Pick<TUAcc, "accountName" | "accountPwd"> & Pick<TUInfo, "email" | "name">;
 };
 
-export type TLRegisterResSuccess = TBaseResBody;
+type TRegisterResSuccess = TBaseResBody;
 
-export type TRegisterResFailure = TBaseResBody & {
-  name: "SimpleError";
-};
-
-export type TRegisterRes = TLRegisterResSuccess | TRegisterResFailure;
+export type TRegisterRes = TRegisterResSuccess | TServerError;

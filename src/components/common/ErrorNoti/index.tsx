@@ -1,4 +1,4 @@
-import { TServerError, TServerSuccess } from "../../../types/system";
+import { TServerError, TServerSuccess } from "../../../types/base";
 
 type ErrorNotiProps = {
   className?: string;

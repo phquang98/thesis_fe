@@ -1,4 +1,4 @@
-import { TBaseResBody } from "../system";
+import { TBaseResBody } from "../base";
 
 export type TBAcc = {
   id: string;
@@ -9,6 +9,7 @@ export type TBAcc = {
   createdAt: Date;
 };
 
-export type BAccResBody = TBaseResBody & {
+export type BAccResBody = Pick<TBaseResBody, "statusCode" | "message"> & {
+  affectedResource: "Bank Account";
   serverData: Record<string, never> | TBAcc;
 };

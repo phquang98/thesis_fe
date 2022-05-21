@@ -1,13 +1,4 @@
-import { FinTransactionResBody } from "./business/FinTransaction.type";
-
-export enum HttpStatusCode {
-  OK = 200,
-  CREATED = 201,
-  BAD_REQUEST = 400,
-  UNAUTHENTICATED = 401,
-  UNAUTHORIZED = 403,
-  NOT_FOUND = 404
-}
+import { HttpStatusCode } from "../utils";
 
 export type TBaseResBody = {
   statusCode: HttpStatusCode;
@@ -15,6 +6,8 @@ export type TBaseResBody = {
   affectedResource: string;
 };
 
+// type TServerSuccess depends on API actions
+// TODO: del this
 export type TServerSuccess = TBaseResBody & {
   serverData: Record<string, unknown>;
 };

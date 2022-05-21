@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
+import { HttpStatusCode } from "../utils";
 import { systemAPI } from "../api";
-import { HttpStatusCode, TServerError, TServerSuccess } from "../types";
+import { TServerError, TServerSuccess } from "../types/base";
 
 const tmpErr: TServerError = {
   name: "SimpleError",
@@ -10,7 +11,7 @@ const tmpErr: TServerError = {
   statusCode: HttpStatusCode.NOT_FOUND
 };
 
-const tmpOK: TServerSuccess = {
+const tmpOK = {
   message: "Testing success OK!",
   affectedResource: "Nothing",
   statusCode: HttpStatusCode.OK,
