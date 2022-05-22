@@ -1,5 +1,5 @@
 import { MouseEventHandler } from "react";
-import { MdLogin, MdLogout } from "react-icons/md";
+import { MdLogin, MdLogout, MdAppRegistration } from "react-icons/md";
 
 type ButtonProps = {
   className?: string;
@@ -24,6 +24,7 @@ const Button = (props: ButtonProps): JSX.Element => {
         <span className="btnIcon">
           {icon === "logout" && <MdLogout />}
           {icon === "login" && <MdLogin />}
+          {icon === "register" && <MdAppRegistration />}
         </span>
       </button>
     </>

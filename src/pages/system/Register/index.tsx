@@ -32,7 +32,8 @@ const RegisterPage = (props: RegisterPageProps): JSX.Element => {
   return (
     <>
       <div className={className}>
-        <StyledCard className="registerCard" styledHeight="16rem" styledWidth="10rem">
+        <h3>Register Form</h3>
+        <StyledCard className="registerCard" styledHeight="14rem" styledWidth="10rem">
           <StyledRegisterForm
             changeStateRegisterName={setIptRegisterName}
             changeStateRegisterEmail={setIptRegisterEmail}

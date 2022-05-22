@@ -38,7 +38,7 @@ const RegisterForm = (props: RegisterFormProps): JSX.Element => {
         <StyledButton
           networkAction={registerBtnFormClick}
           displayText="Register"
-          icon="login"
+          icon="register"
           styledWidth={8}
           isImportant={true}
         />
