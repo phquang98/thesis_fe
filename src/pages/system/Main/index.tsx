@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { systemAPI } from "../../../api";
+
 import { StyledCard } from "../../../components/common/Card/styles";
 import { StyledLoginForm } from "../../../components/LoginForm/styles";
 import { StyledNews } from "../../../components/News/styles";
@@ -7,6 +7,7 @@ import { useAuth } from "../../../hooks/useAuth";
 import { useAPI } from "../../../hooks/useAPI";
 import { TLoginReqBody } from "../../../types/system/login.type";
 import { mainPageData, yleNews } from "../../../utils";
+import { systemAPI } from "../../../api/system";
 
 type MainPageProps = {
   className?: string;
@@ -32,6 +33,7 @@ const MainPage = (props: MainPageProps): JSX.Element => {
 
     // TODO: wrap this inside useAPI
     const serverRes = await systemAPI.login(sendToServer);
+    console.log("serverRes", serverRes);
 
     if ("serverData" in serverRes) {
       auth.setLoggedInUser({ userId: "123456", sid: "abcxyz" });

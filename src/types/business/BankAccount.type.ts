@@ -9,7 +9,11 @@ export type TBAcc = {
   createdAt: Date;
 };
 
-export type BAccResBody = Pick<TBaseResBody, "statusCode" | "message"> & {
+export type BAccClientBody = {
+  clientData: { userId: string };
+};
+
+export type BAccServerRes = Pick<TBaseResBody, "statusCode" | "message"> & {
   affectedResource: "Bank Account";
   serverData: Record<string, never> | TBAcc;
 };

@@ -1,4 +1,4 @@
-import { axiosInstance } from "..";
+import { axiosInstance } from "../axios";
 import { TReloadRes } from "../../types/system/reloadSess.type";
 
 export const reload = async (userIdFromAuthHere: string): Promise<TReloadRes> => {

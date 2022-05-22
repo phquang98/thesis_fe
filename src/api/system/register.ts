@@ -1,4 +1,4 @@
-import { axiosInstance } from "..";
+import { axiosInstance } from "../axios";
 import { TRegisterReqBody, TRegisterRes } from "../../types/system/register.type";
 
 export const register = async (payload: TRegisterReqBody): Promise<TRegisterRes> => {

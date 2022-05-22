@@ -9,7 +9,7 @@ export const axiosInstance = axios.create({
   withCredentials: true // CORS
 });
 
-export * from "./system/index";
+// export * from "./system/index";
 // export * from "./business/index";
 
 // NOTE: use this if want to mimic delay in requests

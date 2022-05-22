@@ -10,7 +10,9 @@ export type TUInfo = {
   pnum?: string;
 };
 
-export type UInfoResBody = Pick<TBaseResBody, "statusCode" | "message"> & {
+export type UInfoClientBody = { clientData: TUInfo };
+
+export type UInfoServerRes = Pick<TBaseResBody, "statusCode" | "message"> & {
   affectedResource: "User Information";
   serverData: Record<string, never> | TUInfo;
 };

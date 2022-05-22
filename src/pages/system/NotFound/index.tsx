@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { systemAPI } from "../../../api";
 
 import { StyledNews } from "../../../components/News/styles";
 
@@ -9,23 +8,6 @@ type NotFoundProps = {
 
 const NotFoundPage = (props: NotFoundProps): JSX.Element => {
   const { className } = props;
-
-  // useEffect(() => {
-  //   systemAPI.register({
-  //     clientData: {
-  //       name: "John",
-  //       email: "Johntest456@gmail.com",
-  //       accountName: "johnny",
-  //       accountPwd: "johnny123"
-  //     }
-  //   });
-  // systemAPI.login({
-  //   clientData: {
-  //     accountName: "Shaina47",
-  //     accountPwd: "wUdr7rPo7qzGqqK"
-  //   }
-  // });
-  // }, []);
 
   return (
     <>

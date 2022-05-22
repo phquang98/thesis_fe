@@ -1,4 +1,4 @@
-import { axiosInstance } from "..";
+import { axiosInstance } from "../axios";
 import { TLoginReqBody, TLoginRes } from "../../types/system/login.type";
 
 export const login = async (payload: TLoginReqBody): Promise<TLoginRes> => {

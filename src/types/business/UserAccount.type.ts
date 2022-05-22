@@ -7,7 +7,7 @@ export type TUAcc = {
   user_id: string;
 };
 
-export type UAccResBody = Pick<TBaseResBody, "statusCode" | "message"> & {
+export type UAccServerRes = Pick<TBaseResBody, "statusCode" | "message"> & {
   affectedResource: "User Account";
   serverData: Record<string, never>;
 };

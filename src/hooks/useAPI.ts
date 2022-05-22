@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 import { HttpStatusCode } from "../utils";
-import { systemAPI } from "../api";
 import { TServerError, TServerSuccess } from "../types/base";
+import { systemAPI } from "../api/system";
 
 const tmpErr: TServerError = {
   name: "SimpleError",
