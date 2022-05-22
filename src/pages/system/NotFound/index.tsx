@@ -1,7 +1,3 @@
-import { useEffect } from "react";
-
-import { StyledNews } from "../../../components/News/styles";
-
 type NotFoundProps = {
   className?: string;
 };

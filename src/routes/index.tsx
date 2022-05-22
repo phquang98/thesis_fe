@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { StyledLayout } from "../layout/styles";
 import { StyledMainPage } from "../pages/system/Main/styles";
 import { StyledNotFound } from "../pages/system/NotFound/styles";
+import { StyledRegisterPage } from "../pages/system/Register/styles";
 
 const AppRoute = (): JSX.Element => {
   return (
@@ -9,6 +10,7 @@ const AppRoute = (): JSX.Element => {
       <Routes>
         <Route path="/" element={<StyledLayout />}>
           <Route index element={<StyledMainPage />} />
+          <Route path="register" element={<StyledRegisterPage />} />
           <Route path="*" element={<StyledNotFound />} />
         </Route>
       </Routes>

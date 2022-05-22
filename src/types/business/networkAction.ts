@@ -1,24 +1,30 @@
-import { BAccResBody } from "./BankAccount.type";
-import { FinTransactionResBody } from "./FinTransaction.type";
-import { UAccResBody } from "./UserAccount.type";
-import { UInfoResBody } from "./UserInfo.type";
+import { BAccClientBody, BAccServerRes } from "./BankAccount.type";
+import {
+  FinTransactionClientBody,
+  FinTransactionClientBodyStatement,
+  FinTransactionServerRes
+} from "./FinTransaction.type";
+import { UAccServerRes } from "./UserAccount.type";
+import { UInfoClientBody, UInfoServerRes } from "./UserInfo.type";
 
 // NOTE: not sure this is retarded or not
-type ExpectedServerBody = BAccResBody | FinTransactionResBody | UAccResBody | UInfoResBody;
+export type ExpectedServerBody = BAccServerRes | FinTransactionServerRes | UAccServerRes | UInfoServerRes;
 
 // opposite to BE, dont care about this ?
 type ExpectedClientParams = { idHere: string };
 
 // NOTE: maybe retarded, cause must know all possible requirements beforehand -> hard scale
-type ExpectedClientBody = Record<string, unknown>;
+type ExpectedClientBody =
+  | BAccClientBody
+  | FinTransactionClientBody
+  | FinTransactionClientBodyStatement
+  | UInfoClientBody;
 
 // NOTE: not sure this is retarded or not
 type ExpectedClientData = ExpectedClientParams | ExpectedClientBody;
 
-export type DatalessNetworkAction = () => Promise<ExpectedServerBody>;
+type DatalessNetworkAction = () => Promise<ExpectedServerBody>;
 
-// export type DatafulNetworkAction = () => Promise<ExpectedServerBody>;
+type DatafulNetworkAction = (payload: ExpectedClientData) => Promise<ExpectedServerBody>;
 
-// export type NetworkAction = DatafulNetworkAction | NoBodyNetworkAction;
-
-export {};
+export type NetworkAction = DatafulNetworkAction | DatalessNetworkAction;

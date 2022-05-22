@@ -1,5 +1,5 @@
-import { MouseEventHandler, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { MouseEventHandler } from "react";
+import { useNavigate } from "react-router-dom";
 import { StyledAnchor } from "../Anchor/styles";
 import { MdLogout } from "react-icons/md";
 // import { UAccAPI } from "../../api";

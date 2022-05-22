@@ -1,5 +1,4 @@
 import { ChangeEventHandler } from "react";
-import { MdSearch } from "react-icons/md";
 
 type InputFieldProps = {
   className?: string;

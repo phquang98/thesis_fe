@@ -1,76 +1,83 @@
-import { useEffect, useState } from "react";
+// BAD FUCK UP, cant type all the API
+export {};
 
-import { HttpStatusCode } from "../utils";
-import { TServerError, TServerSuccess } from "../types/base";
-import { systemAPI } from "../api/system";
+// /* eslint-disable eslint-comments/disable-enable-pair */
+// /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+// /* eslint-disable @typescript-eslint/explicit-function-return-type */
+// import { useEffect, useState } from "react";
 
-const tmpErr: TServerError = {
-  name: "SimpleError",
-  message: "Testing failure OK!",
-  affectedResource: "Nothing",
-  statusCode: HttpStatusCode.NOT_FOUND
-};
+// import { HttpStatusCode } from "../utils";
+// import { TServerError, TServerSuccess } from "../types/base";
+// import { systemAPI } from "../api/system";
+// import { NetworkAction } from "../types/business/networkAction";
 
-const tmpOK = {
-  message: "Testing success OK!",
-  affectedResource: "Nothing",
-  statusCode: HttpStatusCode.OK,
-  serverData: {
-    userId: "123",
-    sid: "456"
-  }
-};
+// const tmpErr: TServerError = {
+//   name: "SimpleError",
+//   message: "Testing failure OK!",
+//   affectedResource: "Nothing",
+//   statusCode: HttpStatusCode.NOT_FOUND
+// };
 
-export const useAPI = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isSuccess, setIsSuccess] = useState<boolean>(false);
-  const [isFailure, setIsFailure] = useState<boolean>(false);
-  const [serverRes, setServerRes] = useState<TServerSuccess | TServerError | null>(null);
-  const [serverErr, setServerErr] = useState<TServerError | null>(null);
+// const tmpOK = {
+//   message: "Testing success OK!",
+//   affectedResource: "Nothing",
+//   statusCode: HttpStatusCode.OK,
+//   serverData: {
+//     userId: "123",
+//     sid: "456"
+//   }
+// };
 
-  useEffect(() => {
-    setIsLoading(true);
-    // code axios here
-    const contactToServer = async (): Promise<
-      | {
-          msg: string;
-        }
-      | undefined
-    > => {
-      try {
-        const serverResponse = await systemAPI.healthCheck();
-        console.log("cac", serverResponse);
-        // setServerRes(serverResponse);
-        // setServerRes(tmpOK);
-        // TODO: sua serverRes thanh serverResponse
-        if (serverRes && serverRes.statusCode === 200) {
-          setIsSuccess(true);
-        } else {
-          setIsFailure(true);
-          setServerErr(tmpErr);
-        }
-        return;
-      } catch (error) {
-        setIsFailure(true);
-        setServerErr(tmpErr);
-        return;
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    contactToServer();
-    // code axios done
+// export const useAPI = () => {
+//   const [isLoading, setIsLoading] = useState<boolean>(false);
+//   const [isSuccess, setIsSuccess] = useState<boolean>(false);
+//   const [isFailure, setIsFailure] = useState<boolean>(false);
+//   const [serverRes, setServerRes] = useState<TServerSuccess | null>(null);
+//   const [serverErr, setServerErr] = useState<TServerError | null>(null);
 
-    // return () => {
-    //   second;
-    // };
-  }, [serverRes, serverErr]);
+//   useEffect(() => {
+//     setIsLoading(true);
+//     // code axios here
+//     const contactToServer = async (): Promise<
+//       | {
+//           msg: string;
+//         }
+//       | undefined
+//     > => {
+//       try {
+//         const serverResponse = await systemAPI.healthCheck();
+//         console.log("cac", serverResponse);
+//         // setServerRes(serverResponse);
+//         // setServerRes(tmpOK);
+//         // TODO: sua serverRes thanh serverResponse
+//         if (serverResponse && serverResponse.msg) {
+//           setIsSuccess(true);
+//         } else {
+//           setIsFailure(true);
+//           setServerErr(tmpErr);
+//         }
+//         return;
+//       } catch (error) {
+//         setIsFailure(true);
+//         setServerErr(tmpErr);
+//         return;
+//       } finally {
+//         setIsLoading(false);
+//       }
+//     };
+//     contactToServer();
+//     // code axios done
 
-  return {
-    isLoading,
-    isSuccess,
-    isFailure,
-    serverRes,
-    serverErr
-  };
-};
+//     // return () => {
+//     //   second;
+//     // };
+//   }, [serverRes, serverErr]);
+
+//   return {
+//     isLoading,
+//     isSuccess,
+//     isFailure,
+//     serverRes,
+//     serverErr
+//   };
+// };

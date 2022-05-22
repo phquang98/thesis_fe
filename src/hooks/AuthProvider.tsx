@@ -1,5 +1,7 @@
 import { createContext, useEffect, useState } from "react";
+import { ExpectedServerBody } from "../types/business/networkAction";
 import { TAppCtx, TUserData } from "../types/system/context.type";
+import { HttpStatusCode } from "../utils";
 
 type AuthProviderProps = {
   children: React.ReactNode;
@@ -12,6 +14,13 @@ const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
   // (2)
   const [userData, setUserData] = useState<TUserData>({ userId: "", sid: "" });
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  // const [serverRes, setServerRes] = useState<{
+  //   message: string;
+  //   affectedResource: string;
+  //   statusCode: HttpStatusCode;
+  //   name?: "SimpleError";
+  //   serverData?: Record<string, unknown>;
+  // }>();
 
   // (3)
   const setLoggedInUser = (loggedInData: TUserData): void => {

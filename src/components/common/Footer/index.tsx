@@ -1,6 +1,5 @@
 import { IoIosArrowForward } from "react-icons/io";
 
-import Anchor from "../Anchor";
 import { StyledAnchor } from "../Anchor/styles";
 
 type FooterProps = {

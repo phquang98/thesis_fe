@@ -4,7 +4,6 @@ import { StyledCard } from "../../../components/common/Card/styles";
 import { StyledLoginForm } from "../../../components/LoginForm/styles";
 import { StyledNews } from "../../../components/News/styles";
 import { useAuth } from "../../../hooks/useAuth";
-import { useAPI } from "../../../hooks/useAPI";
 import { TLoginReqBody } from "../../../types/system/login.type";
 import { mainPageData, yleNews } from "../../../utils";
 import { systemAPI } from "../../../api/system";
@@ -31,23 +30,13 @@ const MainPage = (props: MainPageProps): JSX.Element => {
       }
     };
 
-    // TODO: wrap this inside useAPI
-    const serverRes = await systemAPI.login(sendToServer);
-    console.log("serverRes", serverRes);
-
-    if ("serverData" in serverRes) {
-      auth.setLoggedInUser({ userId: "123456", sid: "abcxyz" });
-    }
-
-    // if ("name" in serverRes) {
-    //   cac;
-    // }
-
-    console.log("check if data ready to send", sendToServer);
-    console.log("send login data to server");
-    const serverReturnGoodData = true;
-    if (serverReturnGoodData) {
-      auth.setLoggedInUser({ userId: "123456", sid: "abcxyz" });
+    try {
+      const serverRes = await systemAPI.login(sendToServer);
+      if (serverRes) {
+        auth.setLoggedInUser({ userId: "123456", sid: "abcxyz" });
+      }
+    } catch (error) {
+      console.log("error", error);
     }
   };
 
