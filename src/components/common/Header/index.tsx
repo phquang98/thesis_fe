@@ -27,7 +27,8 @@ const Header = (props: HeaderProps): JSX.Element => {
   };
 
   // If localStorage contains userId && sid
-  if (isLoggedIn) {
+  const cac = true;
+  if (cac) {
     return (
       <div className={className}>
         <StyledAnchor anchorArrival="/" displayText="Main" />
