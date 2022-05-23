@@ -11,12 +11,6 @@ type RegisterFormProps = {
   registerBtnFormClick: () => Promise<void>;
 };
 
-type LoginFormProps = {
-  className?: string;
-
-  loginBtnFormClick: () => Promise<void>;
-};
-
 const RegisterForm = (props: RegisterFormProps): JSX.Element => {
   const {
     className,
