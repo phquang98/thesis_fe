@@ -7,5 +7,13 @@ export const StyledProfilePage = styled(ProfilePage)`
     min-height: 16rem;
     padding: ${(props) => `${props.theme.defaultPadTop} ${props.theme.globalPadding} 0`};
     margin-bottom: 2rem;
+
+    .profileData {
+      padding: 1rem 1rem 0;
+
+      .profileDataTitle {
+        padding-bottom: 1rem;
+      }
+    }
   }
 `;
