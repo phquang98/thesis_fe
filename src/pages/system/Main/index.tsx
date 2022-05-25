@@ -7,6 +7,7 @@ import { useAuth } from "../../../hooks/useAuth";
 import { TLoginReqBody } from "../../../types/system/login.type";
 import { mainPageData, yleNews } from "../../../utils";
 import { systemAPI } from "../../../api/system";
+import { useNavigate } from "react-router-dom";
 
 type MainPageProps = {
   className?: string;
@@ -17,6 +18,7 @@ const newsDataObj = yleNews;
 const MainPage = (props: MainPageProps): JSX.Element => {
   const { className } = props;
   const auth = useAuth();
+  const navigate = useNavigate();
 
   const [inputAccName, setInputAccName] = useState<string>("");
   const [inputAccPwd, setInputAccPwd] = useState<string>("");
@@ -35,6 +37,7 @@ const MainPage = (props: MainPageProps): JSX.Element => {
       if ("serverData" in returnedCreds) {
         auth.setLoggedInUser({ userId: returnedCreds.serverData.userId, sid: returnedCreds.serverData.sid });
         auth.setServerRes(returnedCreds);
+        navigate("/home");
       }
     } catch (error) {
       console.log("error", error);

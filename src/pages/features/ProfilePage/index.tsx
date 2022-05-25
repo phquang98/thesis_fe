@@ -1,4 +1,8 @@
+import { useEffect, useState } from "react";
+import { businessAPI } from "../../../api/business";
 import { StyledCard } from "../../../components/common/Card/styles";
+import { useAuth } from "../../../hooks/useAuth";
+import { TUInfo } from "../../../types/business";
 
 type ProfilePageProps = {
   className?: string;
@@ -6,21 +10,36 @@ type ProfilePageProps = {
 
 const ProfilePage = (props: ProfilePageProps): JSX.Element => {
   const { className } = props;
+  const { userData } = useAuth();
+  const [loggedUserInfo, setLoggedUserInfo] = useState<TUInfo | null>(null);
+
+  useEffect(() => {
+    const fetchUserInfoData = async (): Promise<void> => {
+      const userIdHere = localStorage.getItem("userId");
+      if (userIdHere) {
+        const returnedData = await businessAPI.uInfoRepo.readOneByUserId(userData.userId);
+        setLoggedUserInfo(returnedData.serverData);
+      }
+    };
+    fetchUserInfoData();
+  }, [userData.userId]);
 
   return (
     <>
       <div className={className}>
-        <StyledCard className="profileData" styledHeight="14rem" styledWidth="28rem">
-          <h3 className="profileDataTitle">User Information</h3>
+        {loggedUserInfo && (
+          <StyledCard className="profileData" styledHeight="14rem" styledWidth="28rem">
+            <h3 className="profileDataTitle">User Information</h3>
 
-          <p>User ID: 0ba30907-64f7-48ce-99b2-b57414d216bc</p>
-          <p>Name: Carlton Steuber</p>
-          <p>Email: Octavia_Quitzon63@example.net</p>
-          <p>Age: 20</p>
-          <p>Address: 8337 Cedrick Rapids</p>
-          <p>Gender: male</p>
-          <p>Phone number: 446-202-3935</p>
-        </StyledCard>
+            <p>User ID: {loggedUserInfo.id}</p>
+            <p>Name: {loggedUserInfo.name}</p>
+            <p>Email: {loggedUserInfo.email}</p>
+            <p>Age: {loggedUserInfo.age}</p>
+            <p>Address: {loggedUserInfo.address}</p>
+            <p>Gender: {loggedUserInfo.gender}</p>
+            <p>Phone number: {loggedUserInfo.pnum}</p>
+          </StyledCard>
+        )}
       </div>
     </>
   );

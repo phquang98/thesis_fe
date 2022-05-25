@@ -10,9 +10,7 @@ const HomePage = (props: HomePageProps): JSX.Element => {
   return (
     <>
       <div className={className}>
-        <div className="recent">
-          <h4>Recent Transactions</h4>
-        </div>
+        <div className="recent">{/* <h4>Recent Transactions</h4> */}</div>
 
         <div>
           <StyledCard className="bankData" styledHeight="12rem" styledWidth="28rem">

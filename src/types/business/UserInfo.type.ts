@@ -14,5 +14,5 @@ export type UInfoClientBody = { clientData: TUInfo };
 
 export type UInfoServerRes = Pick<TBaseResBody, "statusCode" | "message"> & {
   affectedResource: "User Information";
-  serverData: Record<string, never> | TUInfo;
+  serverData: TUInfo;
 };
