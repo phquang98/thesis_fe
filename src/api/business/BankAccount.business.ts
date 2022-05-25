@@ -12,7 +12,7 @@ const readOneByBAccId = async (bAccIdHere: string): Promise<BAccServerRes> => {
 };
 
 const delOneByBAccId = async (bAccIdHere: string): Promise<BAccServerRes> => {
-  const { data } = await axiosInstance.get<BAccServerRes>(`/api/bankaccount/${bAccIdHere}`);
+  const { data } = await axiosInstance.delete<BAccServerRes>(`/api/bankaccount/${bAccIdHere}`);
   return data;
 };
 

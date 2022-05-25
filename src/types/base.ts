@@ -1,4 +1,5 @@
 import { HttpStatusCode } from "../utils";
+import { ExpectedServerBody } from "./business/networkAction";
 
 export type TBaseResBody = {
   statusCode: HttpStatusCode;
@@ -9,7 +10,7 @@ export type TBaseResBody = {
 // type TServerSuccess depends on API actions
 // TODO: del this
 export type TServerSuccess = TBaseResBody & {
-  serverData: Record<string, unknown>;
+  serverData: ExpectedServerBody;
 };
 
 export type TServerError = TBaseResBody & { name: "SimpleError" };

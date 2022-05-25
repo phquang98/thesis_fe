@@ -1,18 +1,35 @@
+import { useEffect } from "react";
+import { useAuth } from "../../../hooks/useAuth";
 import { TServerError, TServerSuccess } from "../../../types/base";
 
 type ErrorNotiProps = {
   className?: string;
-  serverInfoDisplay: TServerSuccess | TServerError | null;
 };
 
 const ErrorNoti = (props: ErrorNotiProps): JSX.Element => {
-  const { className, serverInfoDisplay } = props;
+  const { className } = props;
+  const auth = useAuth();
+  const { serverRes } = auth;
 
-  if (!serverInfoDisplay) {
+  if (serverRes.name === "SimpleError") {
     return (
       <>
         <div className={className}>
-          <p>Fetching data from server ...</p>
+          <p>
+            Error: {serverRes.statusCode}. {serverRes.message}. {serverRes.affectedResource}.
+          </p>
+        </div>
+      </>
+    );
+  }
+
+  if (serverRes.serverData) {
+    return (
+      <>
+        <div className={className}>
+          <p>
+            Status code: {serverRes.statusCode}. {serverRes.message}. {serverRes.affectedResource}.
+          </p>
         </div>
       </>
     );
@@ -20,7 +37,7 @@ const ErrorNoti = (props: ErrorNotiProps): JSX.Element => {
 
   return (
     <>
-      <div className={className}>{serverInfoDisplay && <p>{serverInfoDisplay.message}</p>}</div>
+      <div className={className}>Server message will appear here</div>
     </>
   );
 

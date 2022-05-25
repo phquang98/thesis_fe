@@ -31,12 +31,14 @@ const MainPage = (props: MainPageProps): JSX.Element => {
     };
 
     try {
-      const serverRes = await systemAPI.login(sendToServer);
-      if (serverRes) {
-        auth.setLoggedInUser({ userId: "123456", sid: "abcxyz" });
+      const returnedCreds = await systemAPI.login(sendToServer);
+      if ("serverData" in returnedCreds) {
+        auth.setLoggedInUser({ userId: returnedCreds.serverData.userId, sid: returnedCreds.serverData.sid });
+        auth.setServerRes(returnedCreds);
       }
     } catch (error) {
       console.log("error", error);
+      // auth.setServerRes(error);
     }
   };
 

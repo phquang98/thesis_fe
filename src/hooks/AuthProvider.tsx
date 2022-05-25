@@ -14,13 +14,13 @@ const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
   // (2)
   const [userData, setUserData] = useState<TUserData>({ userId: "", sid: "" });
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  // const [serverRes, setServerRes] = useState<{
-  //   message: string;
-  //   affectedResource: string;
-  //   statusCode: HttpStatusCode;
-  //   name?: "SimpleError";
-  //   serverData?: Record<string, unknown>;
-  // }>();
+  const [serverRes, setServerRes] = useState<{
+    message: string;
+    affectedResource: string;
+    statusCode: HttpStatusCode;
+    name?: "SimpleError";
+    serverData?: Record<string, unknown>;
+  }>({ message: "", affectedResource: "", statusCode: HttpStatusCode.OK });
 
   // (3)
   const setLoggedInUser = (loggedInData: TUserData): void => {
@@ -46,12 +46,14 @@ const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
       setIsLoggedIn(false);
     };
     checkLoggedInUser();
-  }, [userData, isLoggedIn]);
+  }, [userData, isLoggedIn, serverRes]);
 
   // (5)
   return (
     <>
-      <AppCtx.Provider value={{ userData, isLoggedIn, setLoggedInUser, eraseLoggedInUser }}>{children}</AppCtx.Provider>
+      <AppCtx.Provider value={{ userData, isLoggedIn, serverRes, setLoggedInUser, eraseLoggedInUser, setServerRes }}>
+        {children}
+      </AppCtx.Provider>
     </>
   );
 };

@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import { StyledErrorNoti } from "../components/common/ErrorNoti/styles";
 import { StyledFooter } from "../components/common/Footer/styles";
 import { StyledHeader } from "../components/common/Header/styles";
 
@@ -28,6 +29,7 @@ const Layout = (props: LayoutProps): JSX.Element => {
     <>
       <div className={className}>
         <StyledHeader />
+        <StyledErrorNoti />
 
         {/* {isLoading && <StyledErrorNoti serverInfoDisplay={null} />}
         {isSuccess && <StyledErrorNoti serverInfoDisplay={serverRes} />}
