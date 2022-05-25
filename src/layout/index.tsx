@@ -1,7 +1,10 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+import { systemAPI } from "../api/system";
 import { StyledErrorNoti } from "../components/common/ErrorNoti/styles";
 import { StyledFooter } from "../components/common/Footer/styles";
 import { StyledHeader } from "../components/common/Header/styles";
+import { useAuth } from "../hooks/useAuth";
+import { TLogoutRes } from "../types/system/logout.type";
 
 type LayoutProps = {
   className?: string;
@@ -9,8 +12,21 @@ type LayoutProps = {
 
 const Layout = (props: LayoutProps): JSX.Element => {
   const { className } = props;
+  const auth = useAuth();
+  const navigate = useNavigate();
 
-  // const [serverInfo, setServerInfo] = useState<TServerSuccess | TServerError | null>(null);
+  const logoutFunc = async (userIdHere: string): Promise<void> => {
+    try {
+      const logoutRes = await systemAPI.logout(userIdHere);
+      if (!("name" in logoutRes)) {
+        auth.eraseLoggedInUser();
+        navigate("/");
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   // const { isLoading, isSuccess, isFailure, serverRes, serverErr } = useAPI();
 
   // useEffect(() => {
@@ -28,7 +44,7 @@ const Layout = (props: LayoutProps): JSX.Element => {
   return (
     <>
       <div className={className}>
-        <StyledHeader />
+        <StyledHeader logoutFunc={logoutFunc} />
         <StyledErrorNoti />
 
         {/* {isLoading && <StyledErrorNoti serverInfoDisplay={null} />}

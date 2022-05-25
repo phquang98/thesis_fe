@@ -5,14 +5,17 @@ import { MdLogout } from "react-icons/md";
 // import { UAccAPI } from "../../api";
 
 import { useAuth } from "../../../hooks/useAuth";
+import { systemAPI } from "../../../api/system";
+import { TLogoutRes } from "../../../types/system/logout.type";
 
 type HeaderProps = {
   className?: string;
+  logoutFunc: (userIdHere: string) => Promise<void>;
 };
 
 const Header = (props: HeaderProps): JSX.Element => {
-  const { className } = props;
-  const { isLoggedIn, eraseLoggedInUser } = useAuth();
+  const { className, logoutFunc } = props;
+  const { isLoggedIn, userData, eraseLoggedInUser } = useAuth();
   const navigate = useNavigate();
 
   const btnClickLogoutHdlr: MouseEventHandler<HTMLButtonElement> = () => {
@@ -21,9 +24,7 @@ const Header = (props: HeaderProps): JSX.Element => {
     //   // if (serverRes.) TODO: them status code cho BE vao, dmm
     // };
 
-    // after confirm destroy session ID in db, do below NOTE: check Cookie destroy ?
-    eraseLoggedInUser();
-    navigate("/");
+    logoutFunc(userData.userId);
   };
 
   // If localStorage contains userId && sid
